@@ -1,24 +1,10 @@
-# pip3 install pyautogui
+# Player for the halloween google doodle
+
+# Dependencies:
+#   pip3 install pyautogui
 
 import time
 import pyautogui
-
-
-pyautogui.dragRel(0, 300, .25)
-
-
-pyautogui.moveTo(pyautogui.size().width/2,
-                 pyautogui.size().height/3,
-                 duration=.1)
-
-pyautogui.dragRel(300, 0, .25)
-
-
-pyautogui.moveTo(pyautogui.size().width/2,
-                 pyautogui.size().height/3,
-                 duration=.1)
-
-pyautogui.dragRel(0, 300, .25)
 
 
 def resetPosition():
@@ -27,9 +13,23 @@ def resetPosition():
                      duration=.1)
 
 
+def drawLineX():
+    pyautogui.dragRel(300, 0, .25)
+    resetPosition()
+
+
+def drawLineY():
+    pyautogui.dragRel(0, 300, .25)
+    resetPosition()
+
+
 def main():
     print("waiting 1 second... switch to game window")
     time.sleep(1)
+
+    while (True):
+        drawLineX()
+        drawLineY()
 
 
 main()
