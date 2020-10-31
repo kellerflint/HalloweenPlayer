@@ -19,16 +19,33 @@ def resetPosition():
 
 
 def drawLineX():
-    pyautogui.dragRel(300, 0, .25)
     resetPosition()
+    pyautogui.dragRel(300, 0, .12)
 
 
 def drawLineY():
-    pyautogui.dragRel(0, 300, .25)
     resetPosition()
+    pyautogui.dragRel(0, 300, .12)
 
 
-drawings = [drawLineX, drawLineY]
+def drawVUp():
+    resetPosition()
+    pyautogui.mouseDown()
+    pyautogui.moveRel(150, 300, .06)
+    pyautogui.moveRel(150, -300, .06)
+    pyautogui.mouseUp()
+
+
+def drawVDown():
+    resetPosition()
+    pyautogui.moveRel(0, 300, 0)
+    pyautogui.mouseDown()
+    pyautogui.moveRel(150, -300, .06)
+    pyautogui.moveRel(150, 300, .06)
+    pyautogui.mouseUp()
+
+
+drawings = [drawLineX, drawLineY, drawVUp, drawVDown]
 
 
 def main():
