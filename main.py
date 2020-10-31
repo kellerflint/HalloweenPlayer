@@ -1,10 +1,15 @@
 # Player for the halloween google doodle
-
+# Press x to start the player
+# Hold q to quit the player
+#
 # Dependencies:
 #   pip3 install pyautogui
+#   pip3 install keyboard
+
 
 import time
 import pyautogui
+import keyboard
 
 
 def resetPosition():
@@ -23,13 +28,25 @@ def drawLineY():
     resetPosition()
 
 
-def main():
-    print("waiting 1 second... switch to game window")
-    time.sleep(1)
+drawings = [drawLineX, drawLineY]
 
-    while (True):
-        drawLineX()
-        drawLineY()
+
+def main():
+    print("Switch to game window now. Press x to start the player and hold q to stop it.")
+
+    startGame = False
+    while not startGame:
+        if keyboard.is_pressed('x'):
+            startGame = True
+
+    endGame = False
+    while not endGame:
+        for drawing in drawings:
+            if keyboard.is_pressed('q'):
+                print('Exiting...')
+                endGame = True
+                break
+            drawing()
 
 
 main()
